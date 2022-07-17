@@ -1,7 +1,7 @@
 # doubleStateMachine
 
-Exemplo de codigo com dois State Machines funcionando e persistindo em banco em memoria H2
+Exemplo de codigo com State Machines funcionando e persistindo em banco em mysql
 
-Collection do postman esta dentro da pasta postman do repositorio
+Collection do postman e docker-compose esta dentro da pasta postman do repositorio
 
 
