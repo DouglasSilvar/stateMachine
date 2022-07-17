@@ -2,8 +2,6 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.EventOrderDTO;
 import com.example.demo.dto.OrderDTO;
-import com.example.demo.enums.OrderEvents;
-import com.example.demo.model.Order;
 import com.example.demo.service.ChangeStateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +15,7 @@ public class Controller {
     ChangeStateService service;
 
     @PostMapping()
-    public ResponseEntity<OrderDTO> changeState(@RequestBody EventOrderDTO eventOrderDTO) {
+    public ResponseEntity<OrderDTO> changeState(@RequestBody EventOrderDTO eventOrderDTO) throws Exception {
         var retornos =  service.alterState(eventOrderDTO);
         return ResponseEntity.ok(retornos);
     }
@@ -28,7 +26,7 @@ public class Controller {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<OrderDTO> getState(@PathVariable Long id) {
+    public ResponseEntity<OrderDTO> getState(@PathVariable Long id) throws Exception {
         return ResponseEntity.ok().body(service.getState(id));
     }
 

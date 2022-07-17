@@ -5,6 +5,7 @@ import com.example.demo.dto.EventOrderDTO;
 import com.example.demo.dto.OrderDTO;
 import com.example.demo.enums.OrderEvents;
 import com.example.demo.enums.OrderStates;
+import com.example.demo.exceptions.NotFindException;
 import com.example.demo.model.Order;
 import com.example.demo.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +24,13 @@ public class ChangeStateService {
     @Autowired
     private StateMachine<OrderStates, OrderEvents> stateMachine;
 
-    public OrderDTO getState(Long id){
-        var response = repository.findById(id);
-        var order =  response.get();
+    public OrderDTO getState(Long id) throws Exception {
+        Order order;
+        try {
+             order = repository.findById(id).get();
+        }catch (Exception e){
+            throw new NotFindException("Objeto nao encontrado");
+        }
         return OrderDTO.builder()
                 .id(order.getId())
                 .orderStates(OrderStates.valueOf(order.getOrderStates()))
@@ -33,7 +38,7 @@ public class ChangeStateService {
                 .build();
     }
 
-    public OrderDTO alterState(EventOrderDTO eventOrderDTO){
+    public OrderDTO alterState(EventOrderDTO eventOrderDTO) throws Exception {
         var id = eventOrderDTO.getId();
         var event = eventOrderDTO.getEvent();
         var statePersisted = this.getState(id).getOrderStates();

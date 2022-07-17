@@ -1,0 +1,96 @@
+{
+	"info": {
+		"_postman_id": "afe2ad4c-a7b0-49d6-a30a-ebbc3c3c5c56",
+		"name": "StateMAchine",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14754083"
+	},
+	"item": [
+		{
+			"name": "UPDATE",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"event\": \"DELIVER\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/state",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"state"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/state/add",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"state",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET STATUS",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/state/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"state",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -2,8 +2,6 @@ package com.example.demo.stateMachine;
 
 import com.example.demo.enums.OrderEvents;
 import com.example.demo.enums.OrderStates;
-import com.example.demo.service.ChangeStateService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.statemachine.config.EnableStateMachine;
