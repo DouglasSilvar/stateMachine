@@ -2,6 +2,8 @@ package com.example.demo.stateMachine;
 
 import com.example.demo.enums.OrderEvents;
 import com.example.demo.enums.OrderStates;
+import com.example.demo.service.ChangeStateService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.statemachine.config.EnableStateMachine;
@@ -17,8 +19,9 @@ import java.util.EnumSet;
 
 @Configuration
 @EnableStateMachine
-public class OrderStateMachineTransitionByEventConfig extends
+public class OrderStateMachineConfig extends
         EnumStateMachineConfigurerAdapter<OrderStates, OrderEvents> {
+
 
     @Override
     public void configure(StateMachineConfigurationConfigurer<OrderStates, OrderEvents> config)

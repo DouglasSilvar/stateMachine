@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.OrderEventsDTO;
+import com.example.demo.dto.EventOrderDTO;
+import com.example.demo.dto.OrderDTO;
+import com.example.demo.enums.OrderEvents;
 import com.example.demo.model.Order;
 import com.example.demo.service.ChangeStateService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,16 +16,20 @@ public class Controller {
     @Autowired
     ChangeStateService service;
 
-    @PostMapping
-    public ResponseEntity<Order> changeState(@RequestBody OrderEventsDTO orderEventsDTO) {
-        var retornos =  service.saveState(orderEventsDTO.getOrderEvents());
+    @PostMapping()
+    public ResponseEntity<OrderDTO> changeState(@RequestBody EventOrderDTO eventOrderDTO) {
+        var retornos =  service.alterState(eventOrderDTO);
         return ResponseEntity.ok(retornos);
     }
 
-    @GetMapping
-    public ResponseEntity<Order> getState() {
-        var retornos =  service.getState();
-        return ResponseEntity.ok(retornos);
+    @PostMapping("/add")
+    public ResponseEntity<OrderDTO> addMachine(){
+        return ResponseEntity.ok().body(service.add());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<OrderDTO> getState(@PathVariable Long id) {
+        return ResponseEntity.ok().body(service.getState(id));
     }
 
 }
